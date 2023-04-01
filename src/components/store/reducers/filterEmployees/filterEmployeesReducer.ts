@@ -1,9 +1,9 @@
-import {initialState} from './employees/employeesReducer';
+import {initialState} from '../employees/employeesReducer';
 import {
   EFilterActionTypes,
   EmployeeFilterAction,
   EmployeeReducer,
-} from './employyesTypes';
+} from '../employyesTypes';
 
 const filterReducer = (
   state = initialState,
