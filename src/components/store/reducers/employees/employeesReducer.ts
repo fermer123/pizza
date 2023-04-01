@@ -7,8 +7,8 @@ const initialState: EmployeeReducer = {
   error: null,
 };
 const employeesReducer = (
-  action: EmployeeActions,
   state = initialState,
+  action: EmployeeActions,
 ): EmployeeReducer => {
   switch (action.type) {
     case EActionTypes.ADD_EMPLOYEE:
