@@ -1,7 +1,15 @@
-import {EActionTypes, EmployeeActions, EmployeeReducer} from './employyesTypes';
+import {
+  EActionTypes,
+  EmployeeActions,
+  EmployeeReducer,
+} from '../employyesTypes';
 
-const initialState: EmployeeReducer = {
+export const initialState: EmployeeReducer = {
   employees: [],
+  filter: {
+    role: '',
+    isArchive: false,
+  },
   loading: false,
   error: null,
 };

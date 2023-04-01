@@ -32,7 +32,7 @@ yarn build
 # Для разработки или оценки результата [живой странице](http://localhost:3000/) введите
 
 ```
-npm start
+npm run dev
 # or
 yarn start
 ```

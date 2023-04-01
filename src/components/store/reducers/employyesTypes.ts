@@ -1,9 +1,15 @@
 import Employee from '@src/types';
 
+interface Filter {
+  role: string;
+  isArchive: boolean;
+}
+
 export interface EmployeeReducer {
   employees: Employee[];
   loading: boolean;
   error: boolean;
+  filter: Filter;
 }
 
 export enum EActionTypes {
@@ -43,3 +49,19 @@ export type EmployeeActions =
   | IFetchItems
   | IFetchItemsSuccess
   | IFetchItemsError;
+
+export enum EFilterActionTypes {
+  CHANGE_FILTER_ROLE = 'CHANGE_FILTER_ROLE',
+  CHANGE_FILTER_ARCHIVE = 'CHANGE_FILTER_ARCHIVE',
+}
+
+interface IChangeFilterRole {
+  type: EFilterActionTypes.CHANGE_FILTER_ROLE;
+  payload: string;
+}
+interface IChangeFilterArchive {
+  type: EFilterActionTypes.CHANGE_FILTER_ARCHIVE;
+  payload: boolean;
+}
+
+export type EmployeeFilterAction = IChangeFilterArchive | IChangeFilterRole;

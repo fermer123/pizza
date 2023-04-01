@@ -1,17 +1,14 @@
 import Employee from '@src/types';
 import {Dispatch} from 'redux';
 import axios from '@src/api';
-import {
-  EActionTypes,
-  EmployeeActions,
-} from '../reducers/employees/employyesTypes';
+import {EActionTypes, EmployeeActions} from '../reducers/employyesTypes';
 
 export const fetchItems = () => async (dispatch: Dispatch<EmployeeActions>) => {
   try {
     dispatch({
       type: EActionTypes.FETCH_ITEMS,
     });
-    const resp = await axios('/employees');
+    const resp = await axios.get<Employee[]>('/employees');
     dispatch({type: EActionTypes.FETCH_ITEMS_SUCCESS, payload: resp.data});
   } catch (e) {
     dispatch({type: EActionTypes.FETCH_ITEMS_ERROR});
@@ -22,13 +19,16 @@ export const fetchItem = async (
   id: string | number,
   setData: (e: Employee) => void,
 ) => {
-  const resp = await axios(`employees/${id}`);
-  setData(await resp.data);
+  const resp = await axios.get<Employee>(`employees/${id}`);
+  setData(resp.data);
 };
 
-const addEmployee =
-  (newEmployee: Employee) => (dispatch: Dispatch<EmployeeActions>) => {
+export const addEmployee =
+  (newEmployee: Employee) => async (dispatch: Dispatch<EmployeeActions>) => {
     try {
+      await axios.post('/employees', {
+        ...newEmployee,
+      });
       dispatch({
         type: EActionTypes.ADD_EMPLOYEE,
         payload: newEmployee,
@@ -37,4 +37,3 @@ const addEmployee =
       console.log(e);
     }
   };
-export default addEmployee;
