@@ -12,13 +12,15 @@ const employeesReducer = (
   switch (action.type) {
     case EActionTypes.FETCH_ITEMS:
       return {...state, loading: true};
+    case EActionTypes.FETCH_ITEMS_SUCCESS:
+      return {...state, loading: false, employees: action.payload};
+    case EActionTypes.FETCH_ITEMS_ERROR:
+      return {...state, loading: false, error: true};
     case EActionTypes.ADD_EMPLOYEE:
       return {
         ...state,
         employees: [...state.employees, action.payload],
       };
-    case EActionTypes.FETCH_ITEMS_ERROR:
-      return {...state, loading: false, error: true};
     case EActionTypes.UPDATE_EMPLOYEE:
       return {
         ...state,
