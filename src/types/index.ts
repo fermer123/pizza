@@ -1,5 +1,5 @@
 export default interface Employee {
-  id: number;
+  id: number | string;
   name: string;
   isArchive: boolean;
   role: string;

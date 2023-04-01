@@ -1,8 +1,7 @@
-import employee from '@src/api/employees.json';
 import {EActionTypes, EmployeeActions, EmployeeReducer} from './employyesTypes';
 
 const initialState: EmployeeReducer = {
-  employees: employee,
+  employees: [],
   loading: false,
   error: null,
 };
@@ -11,15 +10,19 @@ const employeesReducer = (
   action: EmployeeActions,
 ): EmployeeReducer => {
   switch (action.type) {
+    case EActionTypes.FETCH_ITEMS:
+      return {...state, loading: true};
     case EActionTypes.ADD_EMPLOYEE:
       return {
         ...state,
         employees: [...state.employees, action.payload],
       };
+    case EActionTypes.FETCH_ITEMS_ERROR:
+      return {...state, loading: false, error: true};
     case EActionTypes.UPDATE_EMPLOYEE:
       return {
         ...state,
-        employees: employee.map((e) =>
+        employees: state.employees.map((e) =>
           e.id === action.payload.id
             ? {
                 ...e,
