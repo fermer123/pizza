@@ -1,14 +1,20 @@
 import {FC} from 'react';
-import {Route, Routes} from 'react-router-dom';
+import {Route, Routes, useLocation} from 'react-router-dom';
 import Employees from './pages/employees/Employees';
 import EmployeeId from './pages/employeeId/EmployeeId';
+import Header from './components/header/Header';
+import style from './app.module.scss';
 
 const App: FC = () => {
+  const location = useLocation();
   return (
-    <Routes>
-      <Route path='/' element={<Employees />} />
-      <Route path='/employee/:id' element={<EmployeeId />} />
-    </Routes>
+    <div className={style.app_container}>
+      {location.pathname === '/' ? <Header /> : ''}
+      <Routes>
+        <Route path='/' element={<Employees />} />
+        <Route path='/employee/:id' element={<EmployeeId />} />
+      </Routes>
+    </div>
   );
 };
 
