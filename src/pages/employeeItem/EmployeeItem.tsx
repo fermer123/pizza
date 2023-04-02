@@ -5,24 +5,24 @@ import style from './EmployeeItem.module.scss';
 
 const EmployeeItem: FC<Employee> = ({id, name, phone, role}) => {
   return (
-    <div className={style.employee_container}>
-      <Link to={`/employee/${id}`}>
-        <ul className={style._list}>
-          <li>
-            <p>Имя:</p>
-            <p>{name}</p>
+    <Link to={`/employee/${id}`}>
+      <div className={style.employee_container}>
+        <ul className={style.list}>
+          <li className={style.list_item}>
+            <p className={style.list_item_par}>Имя:</p>
+            <p className={style.list_item_atr}>{name}</p>
           </li>
-          <li>
-            <p>Должность:</p>
-            <p>{role}</p>
+          <li className={style.list_item}>
+            <p className={style.list_item_par}>Должность:</p>
+            <p className={style.list_item_atr}>{role}</p>
           </li>
-          <li>
-            <p>Телефон:</p>
-            <p>{phone}</p>
+          <li className={style.list_item}>
+            <p className={style.list_item_par}>Телефон:</p>
+            <p className={style.list_item_atr}>{phone}</p>
           </li>
         </ul>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 

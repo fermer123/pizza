@@ -1,6 +1,30 @@
 .employee_container {
   max-width: 224px;
-  ._list {
-    color: red;
+  width: 100%;
+  border: 1px solid;
+  box-shadow: 10px 5px 5px rgb(206, 204, 204);
+  border-radius: 12px;
+  padding: 12px 15px;
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    .list_item {
+      flex-wrap: wrap;
+      .list_item_par {
+        font-weight: 700;
+      }
+      .list_item_atr {
+        font-weight: 300;
+      }
+      &:not(:last-child):after {
+        content: '';
+        display: block;
+        width: 90%;
+        height: 1px;
+        margin-top: 5px;
+        background-color: black;
+      }
+    }
   }
 }

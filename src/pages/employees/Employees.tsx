@@ -7,6 +7,7 @@ import style from './Employees.module.scss';
 const Employees = () => {
   const employees = useTypeSelector((state) => state.employees.employees);
   const {fetchItems} = useCustomDispatch();
+
   useEffect(() => {
     fetchItems();
     // eslint-disable-next-line react-hooks/exhaustive-deps
