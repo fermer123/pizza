@@ -1,14 +1,14 @@
 import {FC} from 'react';
-import Employee from '@src/types';
 import style from './AddNewItem.module.scss';
 
 interface IAddNewItem {
-  addEmployee: (el: Employee) => void;
+  addNewEmployee: () => void;
+  title: string;
 }
-const AddNewItem: FC<IAddNewItem> = ({addEmployee}) => {
+const AddNewItem: FC<IAddNewItem> = ({title, addNewEmployee}) => {
   return (
-    <button type='button' className={style.btn}>
-      Добавить
+    <button onClick={addNewEmployee} type='button' className={style.btn}>
+      {title}
     </button>
   );
 };
