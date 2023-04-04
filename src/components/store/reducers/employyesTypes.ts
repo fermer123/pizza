@@ -4,6 +4,8 @@ export interface EmployeeReducer {
   employees: Employee[];
   loading: boolean;
   error: boolean;
+  isArchive: boolean | null;
+  role: string;
 }
 
 export enum EActionTypes {

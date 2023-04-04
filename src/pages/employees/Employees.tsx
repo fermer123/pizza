@@ -8,7 +8,12 @@ const Employees = () => {
   const {employees, loading, error} = useTypeSelector(
     (state) => state.employees,
   );
+  const {role, isArchive} = useTypeSelector((state) => state.employees);
   const {fetchItems} = useCustomDispatch();
+
+  const filterByAllParams = employees
+    .filter((e) => (isArchive === null ? e : e.isArchive === true))
+    .map((e) => (e.role === role ? e.role === role : e));
 
   useEffect(() => {
     fetchItems();
@@ -23,7 +28,7 @@ const Employees = () => {
   }
   return (
     <div className={style.employees_container}>
-      {employees?.map((e) => (
+      {filterByAllParams?.map((e) => (
         <EmployeeItem {...e} key={e.id} />
       ))}
     </div>

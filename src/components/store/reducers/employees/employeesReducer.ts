@@ -8,6 +8,8 @@ export const initialState: EmployeeReducer = {
   employees: [],
   loading: false,
   error: null,
+  isArchive: null,
+  role: '',
 };
 const employeesReducer = (
   state = initialState,
@@ -44,16 +46,12 @@ const employeesReducer = (
     case EActionTypes.CHANGE_FILTER_ROLE:
       return {
         ...state,
-        employees: state.employees.filter((e) =>
-          e.role.includes(action.payload),
-        ),
+        role: action.payload,
       };
     case EActionTypes.CHANGE_FILTER_ARCHIVE:
       return {
         ...state,
-        employees: state.employees.filter(
-          (e) => e.isArchive !== action.payload,
-        ),
+        isArchive: action.payload,
       };
 
     default:

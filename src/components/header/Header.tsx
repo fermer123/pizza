@@ -19,17 +19,27 @@ const Header: FC = () => {
   const birthday = useInput();
 
   const archiveFilter = useCallback(() => {
-    setArchive(!archive);
-    filterByArchive(archive);
+    if (archive === false) {
+      setArchive(true);
+      filterByArchive(archive);
+    } else {
+      filterByArchive(null);
+    }
   }, [archive, filterByArchive]);
 
   const roleFilter = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
+      e.preventDefault();
       setFilter(e.target.value);
       filterByRole(filter);
     },
     [filter, filterByRole],
   );
+
+  const resetFilter = useCallback(() => {
+    setFilter('');
+    filterByRole('');
+  }, [filterByRole]);
 
   const switchEdit = useCallback(() => {
     setEdit(!edit);
@@ -74,6 +84,12 @@ const Header: FC = () => {
             filter={filter}
             roleFilter={roleFilter}
           />
+          <button
+            className={style.header_container_btn_reset}
+            type='button'
+            onClick={resetFilter}>
+            сбросить фильтр
+          </button>
           <AddNewItem title='добавить' addNewEmployee={switchEdit} />
         </div>
       )}

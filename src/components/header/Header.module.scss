@@ -5,11 +5,19 @@
   align-items: center;
   .header_container_form {
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
   }
   .header_container_btn {
     display: flex;
     justify-content: space-between;
+    gap: 15px;
+    .header_container_btn_reset {
+      display: block;
+      border-radius: 20%;
+      padding: 7px 12px;
+    }
+    @media (max-width: 400px) {
+      flex-direction: column;
+    }
   }
 }
