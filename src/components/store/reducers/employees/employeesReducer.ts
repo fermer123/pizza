@@ -52,7 +52,7 @@ const employeesReducer = (
       return {
         ...state,
         employees: state.employees.filter(
-          (e) => e.isArchive === action.payload,
+          (e) => e.isArchive !== action.payload,
         ),
       };
 

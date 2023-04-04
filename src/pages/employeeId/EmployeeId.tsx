@@ -5,6 +5,7 @@ import {useParams} from 'react-router-dom';
 import useInput from '@src/components/hooks/input';
 import RoleList from '@src/components/roleList/RoleList';
 import useCustomDispatch from '@src/components/hooks/useCustomDispatch';
+import MaskedInput from 'react-text-mask';
 import style from './EmployeeId.module.scss';
 
 const EmployeeId = () => {
@@ -66,8 +67,31 @@ const EmployeeId = () => {
       {edit ? (
         <>
           <input placeholder='имя' {...changeName} />
-          <input placeholder='телефон' {...changePhone} />
-          <input placeholder='дата рождения' {...cnangeBirthday} />
+          <MaskedInput
+            mask={[
+              '(',
+              /[1-9]/,
+              /\d/,
+              ')',
+              ' ',
+              /\d/,
+              /\d/,
+              /\d/,
+              '-',
+              /\d/,
+              /\d/,
+              '-',
+              /\d/,
+              /\d/,
+            ]}
+            placeholder='телефон'
+            {...changePhone}
+          />
+          <MaskedInput
+            mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+            placeholder='дата рождения'
+            {...cnangeBirthday}
+          />
           <RoleList role={selectRole} onChange={changeRole} />
           <input
             placeholder='в архиве'
