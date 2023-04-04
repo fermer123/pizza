@@ -1,4 +1,4 @@
-import {FC, useCallback, useState} from 'react';
+import {FC, useCallback, useEffect, useState} from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {v4 as uuidv4} from 'uuid';
 import style from './Header.module.scss';
@@ -31,10 +31,13 @@ const Header: FC = () => {
   const roleFilter = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
       setFilter(e.target.value);
-      filterByRole(filter);
     },
-    [filter, filterByRole],
+    [setFilter],
   );
+
+  useEffect(() => {
+    filterByRole(filter);
+  }, [filter]);
 
   const resetFilter = useCallback(() => {
     setFilter('');
