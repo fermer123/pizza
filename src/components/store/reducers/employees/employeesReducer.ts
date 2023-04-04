@@ -6,10 +6,6 @@ import {
 
 export const initialState: EmployeeReducer = {
   employees: [],
-  filter: {
-    role: '',
-    isArchive: false,
-  },
   loading: false,
   error: null,
 };
@@ -44,6 +40,21 @@ const employeesReducer = (
             : e,
         ),
       };
+    case EActionTypes.CHANGE_FILTER_ROLE:
+      return {
+        ...state,
+        employees: state.employees.filter((e) =>
+          e.role.includes(action.payload),
+        ),
+      };
+    case EActionTypes.CHANGE_FILTER_ARCHIVE:
+      return {
+        ...state,
+        employees: state.employees.filter(
+          (e) => e.isArchive === action.payload,
+        ),
+      };
+
     default:
       return state;
   }

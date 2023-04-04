@@ -1,14 +1,11 @@
 import {Dispatch} from 'redux';
-import {
-  EFilterActionTypes,
-  EmployeeFilterAction,
-} from '../reducers/employyesTypes';
+import {EActionTypes, EmployeeActions} from '../reducers/employyesTypes';
 
 export const filterByRole =
-  (role: string) => (dispatch: Dispatch<EmployeeFilterAction>) => {
+  (role: string) => (dispatch: Dispatch<EmployeeActions>) => {
     try {
       dispatch({
-        type: EFilterActionTypes.CHANGE_FILTER_ROLE,
+        type: EActionTypes.CHANGE_FILTER_ROLE,
         payload: role,
       });
     } catch (error) {
@@ -16,10 +13,10 @@ export const filterByRole =
     }
   };
 export const filterByArchive =
-  (arc: boolean) => (dispatch: Dispatch<EmployeeFilterAction>) => {
+  (arc: boolean) => (dispatch: Dispatch<EmployeeActions>) => {
     try {
       dispatch({
-        type: EFilterActionTypes.CHANGE_FILTER_ARCHIVE,
+        type: EActionTypes.CHANGE_FILTER_ARCHIVE,
         payload: arc,
       });
     } catch (error) {
