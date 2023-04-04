@@ -1,6 +1,7 @@
 import {FC, useCallback, useEffect, useState} from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {v4 as uuidv4} from 'uuid';
+import MaskedInput from 'react-text-mask';
 import style from './Header.module.scss';
 import AddNewItem from '../addNewItem/AddNewItem';
 import useCustomDispatch from '../hooks/useCustomDispatch';
@@ -75,8 +76,31 @@ const Header: FC = () => {
       {edit ? (
         <div className={style.header_container_form}>
           <input placeholder='имя' {...name} />
-          <input placeholder='телефон' {...phone} />
-          <input placeholder='дата рождения' {...birthday} />
+          <MaskedInput
+            mask={[
+              '(',
+              /[1-9]/,
+              /\d/,
+              ')',
+              ' ',
+              /\d/,
+              /\d/,
+              /\d/,
+              '-',
+              /\d/,
+              /\d/,
+              '-',
+              /\d/,
+              /\d/,
+            ]}
+            placeholder='телефон'
+            {...phone}
+          />
+          <MaskedInput
+            mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+            placeholder='дата рождения'
+            {...birthday}
+          />
           <RoleFilterSelect onChange={onChangeRole} role={selectRole} />
           <AddNewItem title='добавить' addNewEmployee={addNewEmployee} />
         </div>
