@@ -135,30 +135,6 @@
       "role": "waiter",
       "phone": "+7 (877) 450-3253",
       "birthday": "03.12.1994"
-    },
-    {
-      "name": "123",
-      "phone": "йцу",
-      "birthday": "йцу",
-      "id": "2943bf08-d769-48f9-b54c-74e18620347b",
-      "isArchive": false,
-      "role": ""
-    },
-    {
-      "name": "фывфыв",
-      "phone": "фывфыв",
-      "birthday": "фыв",
-      "id": "5bfff64d-c37f-4288-a188-e0c17e511516",
-      "isArchive": false,
-      "role": ""
-    },
-    {
-      "name": "asd",
-      "phone": "asd",
-      "birthday": "asd",
-      "id": "d105adef-5e77-4402-a9c9-8eb7fe762e17",
-      "isArchive": false,
-      "role": ""
     }
   ]
 }

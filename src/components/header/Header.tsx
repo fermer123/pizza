@@ -6,14 +6,30 @@ import AddNewItem from '../addNewItem/AddNewItem';
 import useCustomDispatch from '../hooks/useCustomDispatch';
 import useInput from '../hooks/input';
 import RoleFilterSelect from '../roleList/RoleList';
+import FilterItems from '../filterItems/FilterItems';
 
 const Header: FC = () => {
   const [edit, setEdit] = useState<boolean>(false);
   const [selectRole, setSelectRole] = useState<string>('cook');
-  const {addEmployee} = useCustomDispatch();
+  const [filter, setFilter] = useState<string>('');
+  const [archive, setArchive] = useState<boolean>(false);
+  const {addEmployee, filterByRole, filterByArchive} = useCustomDispatch();
   const name = useInput();
   const phone = useInput();
   const birthday = useInput();
+
+  const archiveFilter = useCallback(() => {
+    setArchive(!archive);
+    filterByArchive(archive);
+  }, [archive, filterByArchive]);
+
+  const roleFilter = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      setFilter(e.target.value);
+      filterByRole(filter);
+    },
+    [filter, filterByRole],
+  );
 
   const switchEdit = useCallback(() => {
     setEdit(!edit);
@@ -51,7 +67,15 @@ const Header: FC = () => {
           <AddNewItem title='добавить' addNewEmployee={addNewEmployee} />
         </div>
       ) : (
-        <AddNewItem title='добавить' addNewEmployee={switchEdit} />
+        <div className={style.header_container_btn}>
+          <FilterItems
+            archive={archive}
+            archiveFilter={archiveFilter}
+            filter={filter}
+            roleFilter={roleFilter}
+          />
+          <AddNewItem title='добавить' addNewEmployee={switchEdit} />
+        </div>
       )}
     </div>
   );

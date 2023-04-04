@@ -1,6 +1,6 @@
 import {useDispatch} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as actionCreators from '../store/action/employeesAction';
+import actionCreators from '../store/reducers/index';
 
 const useCustomDispatch = () => {
   const dispatch = useDispatch();
