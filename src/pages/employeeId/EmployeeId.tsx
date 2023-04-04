@@ -21,7 +21,7 @@ const EmployeeId = () => {
 
   useEffect(() => {
     fetchItem(id, setData);
-  }, [id]);
+  }, [id, editEmployee]);
 
   const changeRole = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -65,7 +65,7 @@ const EmployeeId = () => {
   return (
     <div className={style.employee_container}>
       {edit ? (
-        <>
+        <div className={style.edit_form}>
           <input placeholder='имя' {...changeName} />
           <MaskedInput
             mask={[
@@ -93,12 +93,15 @@ const EmployeeId = () => {
             {...cnangeBirthday}
           />
           <RoleList role={selectRole} onChange={changeRole} />
-          <input
-            placeholder='в архиве'
-            type='checkbox'
-            onChange={changeArchive}
-          />
-        </>
+          <div className={style.edit_form_archive}>
+            <p>В архиве</p>
+            <input
+              placeholder='в архиве'
+              type='checkbox'
+              onChange={changeArchive}
+            />
+          </div>
+        </div>
       ) : (
         <ul className={style.list}>
           <li className={style.list_item}>

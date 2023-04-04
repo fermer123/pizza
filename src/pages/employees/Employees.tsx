@@ -5,7 +5,9 @@ import EmployeeItem from '../employeeItem/EmployeeItem';
 import style from './Employees.module.scss';
 
 const Employees = () => {
-  const employees = useTypeSelector((state) => state.employees.employees);
+  const {employees, loading, error} = useTypeSelector(
+    (state) => state.employees,
+  );
   const {fetchItems} = useCustomDispatch();
 
   useEffect(() => {
@@ -13,6 +15,12 @@ const Employees = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (loading) {
+    return <h1>loading</h1>;
+  }
+  if (error) {
+    return <h1>error</h1>;
+  }
   return (
     <div className={style.employees_container}>
       {employees?.map((e) => (

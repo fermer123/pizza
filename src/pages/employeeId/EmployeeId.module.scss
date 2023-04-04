@@ -26,6 +26,19 @@
         margin-top: 5px;
         background-color: black;
       }
+      &:last-child {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .edit_form {
+    .edit_form_archive {
+      display: flex;
+      justify-content: flex-start;
+      gap: 15px;
+      margin-bottom: 10px;
     }
   }
 }
