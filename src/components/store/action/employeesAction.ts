@@ -41,7 +41,7 @@ export const addEmployee =
 export const editEmployee =
   (newEmployee: Employee) => async (dispatch: Dispatch<EmployeeActions>) => {
     try {
-      await axios.patch(`items/${newEmployee.id}`, {...newEmployee});
+      await axios.patch(`employees/${newEmployee.id}`, {...newEmployee});
       dispatch({
         type: EActionTypes.UPDATE_EMPLOYEE,
         payload: newEmployee,

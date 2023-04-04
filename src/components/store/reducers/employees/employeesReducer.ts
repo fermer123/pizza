@@ -34,8 +34,9 @@ const employeesReducer = (
                 ...e,
                 name: action.payload.name,
                 role: action.payload.role,
-                phone: action.payload.role,
+                phone: action.payload.phone,
                 birthday: action.payload.birthday,
+                isArchive: action.payload.isArchive,
               }
             : e,
         ),
