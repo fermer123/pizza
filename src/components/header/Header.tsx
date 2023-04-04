@@ -37,6 +37,7 @@ const Header: FC = () => {
 
   useEffect(() => {
     filterByRole(filter);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
   const resetFilter = useCallback(() => {
