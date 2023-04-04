@@ -10,7 +10,7 @@ import FilterItems from '../filterItems/FilterItems';
 
 const Header: FC = () => {
   const [edit, setEdit] = useState<boolean>(false);
-  const [selectRole, setSelectRole] = useState<string>('cook');
+  const [selectRole, setSelectRole] = useState<string>('');
   const [filter, setFilter] = useState<string>('');
   const [archive, setArchive] = useState<boolean>(false);
   const {addEmployee, filterByRole, filterByArchive} = useCustomDispatch();
@@ -24,12 +24,12 @@ const Header: FC = () => {
       filterByArchive(archive);
     } else {
       filterByArchive(null);
+      setArchive(false);
     }
   }, [archive, filterByArchive]);
 
   const roleFilter = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
-      e.preventDefault();
       setFilter(e.target.value);
       filterByRole(filter);
     },

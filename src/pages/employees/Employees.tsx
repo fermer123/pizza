@@ -13,7 +13,7 @@ const Employees = () => {
 
   const filterByAllParams = employees
     .filter((e) => (isArchive === null ? e : e.isArchive === true))
-    .map((e) => (e.role === role ? e.role === role : e));
+    .filter((e) => (role === '' ? e : e.role.includes(role)));
 
   useEffect(() => {
     fetchItems();
