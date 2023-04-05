@@ -6,6 +6,7 @@ export interface EmployeeReducer {
   error: boolean;
   isArchive: boolean | null;
   role: string;
+  sortByName: boolean;
 }
 
 export enum EActionTypes {

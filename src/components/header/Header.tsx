@@ -14,10 +14,17 @@ const Header: FC = () => {
   const [selectRole, setSelectRole] = useState<string>('');
   const [filter, setFilter] = useState<string>('');
   const [archive, setArchive] = useState<boolean>(false);
-  const {addEmployee, filterByRole, filterByArchive} = useCustomDispatch();
+  const [sortName, setSortName] = useState<boolean>(false);
+  const {addEmployee, filterByRole, filterByArchive, sortByName} =
+    useCustomDispatch();
   const name = useInput();
   const phone = useInput();
   const birthday = useInput();
+
+  const sortByNameHandler = useCallback(() => {
+    setSortName(!sortName);
+    sortByName(sortName);
+  }, [sortByName, sortName]);
 
   const archiveFilter = useCallback(() => {
     if (archive === false) {
@@ -112,6 +119,12 @@ const Header: FC = () => {
             filter={filter}
             roleFilter={roleFilter}
           />
+          <button
+            onClick={sortByNameHandler}
+            type='button'
+            className={style.header_container_btn_reset}>
+            сортировать по имени
+          </button>
           <button
             className={style.header_container_btn_reset}
             type='button'

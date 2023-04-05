@@ -10,6 +10,7 @@ export const initialState: EmployeeReducer = {
   error: null,
   isArchive: null,
   role: '',
+  sortByName: false,
 };
 const employeesReducer = (
   state = initialState,
@@ -52,6 +53,11 @@ const employeesReducer = (
       return {
         ...state,
         isArchive: action.payload,
+      };
+    case EActionTypes.SORT_BY_NAME:
+      return {
+        ...state,
+        employees: state.employees.sort((a, b) => (a.name < b.name ? -1 : 1)),
       };
 
     default:
