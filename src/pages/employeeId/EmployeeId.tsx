@@ -18,6 +18,7 @@ const EmployeeId = () => {
   const cnangeBirthday = useInput();
   const {id} = useParams();
   const {editEmployee} = useCustomDispatch();
+  const {name, role, phone, isArchive, birthday} = data;
 
   useEffect(() => {
     fetchItem(id, setData);
@@ -36,32 +37,28 @@ const EmployeeId = () => {
 
   const onEditHandler = useCallback(() => {
     setEdit(!edit);
-    if (
-      cnangeBirthday.value.length &&
-      changeName.value.length &&
-      changePhone.value.length
-    ) {
-      editEmployee({
-        id,
-        birthday: cnangeBirthday.value,
-        isArchive: archive,
-        name: changeName.value,
-        phone: changePhone.value,
-        role: selectRole,
-      });
-    }
+    editEmployee({
+      id,
+      birthday: cnangeBirthday.value || birthday,
+      isArchive: archive,
+      name: changeName.value || name,
+      phone: changePhone.value || phone,
+      role: selectRole,
+    });
   }, [
     archive,
+    birthday,
     changeName.value,
     changePhone.value,
     cnangeBirthday.value,
     edit,
     editEmployee,
     id,
+    name,
+    phone,
     selectRole,
   ]);
 
-  const {name, role, phone, isArchive} = data;
   return (
     <div className={style.employee_container}>
       {edit ? (
