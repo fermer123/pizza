@@ -19,6 +19,10 @@ const EmployeeId = () => {
   const {id} = useParams();
   const {editEmployee} = useCustomDispatch();
 
+  useEffect(() => {
+    fetchItem(id, setData);
+  }, [id, edit]);
+
   const changeRole = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
       setSelectRole(e.target.value);
@@ -56,10 +60,6 @@ const EmployeeId = () => {
     id,
     selectRole,
   ]);
-
-  useEffect(() => {
-    fetchItem(id, setData);
-  }, [id, onEditHandler]);
 
   const {name, role, phone, isArchive} = data;
   return (
