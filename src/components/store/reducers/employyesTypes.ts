@@ -16,6 +16,8 @@ export enum EActionTypes {
   UPDATE_EMPLOYEE = 'UPDATE_EMPLOYEE',
   CHANGE_FILTER_ROLE = 'CHANGE_FILTER_ROLE',
   CHANGE_FILTER_ARCHIVE = 'CHANGE_FILTER_ARCHIVE',
+  SORT_BY_NAME = 'SORT_BY_NAME',
+  SORT_BY_BIRTHDAY = 'SORT_BY_BIRTHDAY',
 }
 
 interface IFetchItems {
@@ -50,6 +52,16 @@ interface IChangeFilterArchive {
   payload: boolean;
 }
 
+interface ISortByName {
+  type: EActionTypes.SORT_BY_NAME;
+  payload: boolean;
+}
+
+interface ISortByBirthday {
+  type: EActionTypes.SORT_BY_BIRTHDAY;
+  payload: boolean;
+}
+
 export type EmployeeActions =
   | AddEmployeeAction
   | UpdateEmployeeAction
@@ -57,4 +69,6 @@ export type EmployeeActions =
   | IFetchItemsSuccess
   | IFetchItemsError
   | IChangeFilterArchive
-  | IChangeFilterRole;
+  | IChangeFilterRole
+  | ISortByName
+  | ISortByBirthday;
