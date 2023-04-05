@@ -3,7 +3,7 @@
   justify-content: flex-end;
   padding: 10px 0;
   align-items: center;
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     justify-content: center;
   }
   .header_container_form {
@@ -19,7 +19,7 @@
       border-radius: 20%;
       padding: 7px 12px;
     }
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
       flex-direction: column;
     }
   }

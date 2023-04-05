@@ -11,6 +11,7 @@ export const initialState: EmployeeReducer = {
   isArchive: null,
   role: '',
   sortByName: null,
+  sortByBirthDay: null,
 };
 const employeesReducer = (
   state = initialState,
@@ -62,6 +63,19 @@ const employeesReducer = (
             return a.name < b.name ? -1 : 1;
           }
           return b.name < a.name ? -1 : 1;
+        }),
+      };
+    case EActionTypes.SORT_BY_BIRTHDAY:
+      return {
+        ...state,
+        employees: state.employees.sort((a, b) => {
+          const first = new Date(a.birthday.split('.').reverse().join('-'));
+          const sec = new Date(b.birthday.split('.').reverse().join('-'));
+          console.log(first);
+          if (action.payload) {
+            return first - sec;
+          }
+          return sec - first;
         }),
       };
 

@@ -19,7 +19,7 @@ const Employees = () => {
     fetchItems();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  console.log(filterByAllParams.map((e) => e.birthday));
   if (loading) {
     return <h1>loading</h1>;
   }
