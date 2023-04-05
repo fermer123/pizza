@@ -71,7 +71,6 @@ const employeesReducer = (
         employees: state.employees.sort((a, b) => {
           const first = new Date(a.birthday.split('.').reverse().join('-'));
           const sec = new Date(b.birthday.split('.').reverse().join('-'));
-          console.log(first);
           if (action.payload) {
             return first - sec;
           }
