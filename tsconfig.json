@@ -26,5 +26,5 @@
     ]
   },
   "exclude": ["node_modules", "build"],
-  "include": ["./src", "webpack.config.ts", "./index.d.ts"]
+  "include": ["./src", "webpack.config.ts", "./index.d.ts", "jest.config.ts"]
 }
