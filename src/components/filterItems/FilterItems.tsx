@@ -5,17 +5,10 @@ import RoleList from '../roleList/RoleList';
 interface IFilterItems {
   filter: string;
   roleFilter: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  archive: boolean;
   archiveFilter: () => void;
 }
 
-const FilterItems: FC<IFilterItems> = ({
-  filter,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  archive,
-  roleFilter,
-  archiveFilter,
-}) => {
+const FilterItems: FC<IFilterItems> = ({filter, roleFilter, archiveFilter}) => {
   return (
     <div className={style.filter_container}>
       <p>filter by role</p>

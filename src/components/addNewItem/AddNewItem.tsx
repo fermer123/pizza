@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import style from './AddNewItem.module.scss';
 
-interface IAddNewItem {
+export interface IAddNewItem {
   addNewEmployee: () => void;
   title: string;
 }

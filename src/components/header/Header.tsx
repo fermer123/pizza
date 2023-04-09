@@ -125,7 +125,6 @@ const Header: FC = () => {
       ) : (
         <div className={style.header_container_btn}>
           <FilterItems
-            archive={archive}
             archiveFilter={archiveFilter}
             filter={filter}
             roleFilter={roleFilter}
