@@ -1,10 +1,10 @@
 import useTypeSelector from '@src/components/hooks/useTypeSelector';
-import {useEffect} from 'react';
+import {FC, useEffect} from 'react';
 import useCustomDispatch from '@src/components/hooks/useCustomDispatch';
 import EmployeeItem from '../employeeItem/EmployeeItem';
 import style from './Employees.module.scss';
 
-const Employees = () => {
+const Employees: FC = () => {
   const {employees, loading, error} = useTypeSelector(
     (state) => state.employees,
   );
@@ -27,7 +27,7 @@ const Employees = () => {
     return <h1>error</h1>;
   }
   return (
-    <div className={style.employees_container}>
+    <div data-testId='employees' className={style.employees_container}>
       {filterByAllParams?.map((e) => (
         <EmployeeItem {...e} key={e.id} />
       ))}

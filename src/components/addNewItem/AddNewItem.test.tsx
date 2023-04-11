@@ -2,7 +2,7 @@ import {fireEvent, render, screen} from '@testing-library/react';
 import AddNewItem, {IAddNewItem} from './AddNewItem';
 import style from './AddNewItem.module.scss';
 
-describe('<AddNewItem/>', () => {
+describe('AddNewItem', () => {
   const action = jest.fn();
   const customProps: IAddNewItem = {
     title: 'добавить',

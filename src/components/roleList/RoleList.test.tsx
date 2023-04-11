@@ -1,7 +1,7 @@
 import {render, screen} from '@testing-library/react';
 import RoleFilterSelect, {IRoleFilterSelect} from './RoleList';
 
-describe('<RoleFilterSelect/>', () => {
+describe('RoleFilterSelect', () => {
   const roles = ['cook', 'driver', 'waiter'];
   const action = jest.fn();
   const props: IRoleFilterSelect = {

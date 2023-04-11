@@ -3,7 +3,7 @@ import {Route, Routes, useLocation} from 'react-router-dom';
 import Employees from './pages/employees/Employees';
 import EmployeeId from './pages/employeeId/EmployeeId';
 import Header from './components/header/Header';
-import style from './app.module.scss';
+import style from './App.module.scss';
 
 const App: FC = () => {
   const location = useLocation();
