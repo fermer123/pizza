@@ -72,9 +72,9 @@ const employeesReducer = (
           const first = new Date(a.birthday.split('.').reverse().join('-'));
           const sec = new Date(b.birthday.split('.').reverse().join('-'));
           if (action.payload) {
-            return first - sec;
+            return first.getTime() - sec.getTime();
           }
-          return sec - first;
+          return sec.getTime() - first.getTime();
         }),
       };
 
